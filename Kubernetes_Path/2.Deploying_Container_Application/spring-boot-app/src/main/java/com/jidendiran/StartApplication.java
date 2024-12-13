@@ -1,4 +1,4 @@
-package com.bala;
+package com.jidendiran;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
