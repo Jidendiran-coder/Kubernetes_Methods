@@ -1,0 +1,84 @@
+pipeline { 
+    agent any
+
+    environment {
+        MAVEN_HOME = tool name: 'Maven' // Ensure this matches your Maven configuration in Jenkins
+        DOCKER_HUB_USERNAME = 'joel071998'
+        DOCKER_HUB_REPO = 'springbootapp'
+        IMAGE_TAG = '1.0'
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git url: 'https://github.com/Jidendiran-coder/Kubernetes_Methods.git', branch: 'main'
+            }
+        }
+
+        stage('Compile Code') {
+            steps {
+                dir('Kubernetes_Path/5.CICD_Project_Using_Docker_With_Ansible/spring-boot-app') {
+                    script {
+                        sh "${MAVEN_HOME}/bin/mvn compile"
+                    }
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                dir('Kubernetes_Path/5.CICD_Project_Using_Docker_With_Ansible/spring-boot-app') {
+                    script {
+                        sh "${MAVEN_HOME}/bin/mvn test"
+                    }
+                }
+            }
+        }
+
+        stage('Build with Maven') {
+            steps {
+                dir('Kubernetes_Path/5.CICD_Project_Using_Docker_With_Ansible/spring-boot-app') {
+                    script {
+                        sh "${MAVEN_HOME}/bin/mvn clean install"
+                    }
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                dir('Kubernetes_Path/5.CICD_Project_Using_Docker_With_Ansible/spring-boot-app') {
+                    script {
+                        // Build the Docker image
+                        sh """
+                        docker build -t ${DOCKER_HUB_USERNAME}/${DOCKER_HUB_REPO}:${IMAGE_TAG} .
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // Login to Docker Hub
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh """
+                        echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin
+                        docker push ${DOCKER_HUB_USERNAME}/${DOCKER_HUB_REPO}:${IMAGE_TAG}
+                        """
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build, testing, packaging, and Docker image push succeeded!'
+        }
+        failure {
+            echo 'Build, testing, packaging, or Docker image push failed.'
+        }
+    }
+}

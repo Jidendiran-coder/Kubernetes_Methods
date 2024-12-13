@@ -1,6 +1,6 @@
 # TRADITIONAL APPROACH:
 
-The Below Stpes are used to make live an simple Java Spring application in Ubuntu22 Machine.
+The Below Steps used to make live an simple Java Spring application in Ubuntu22 Machine.
 
 1. First Create an Ubuntu22 EC2 instance in AWS or Whatever platfrom you prefer.
 2. My application Code all will be placed in the spring-boot-app folder, Copy the entire Project folder into the AWS server.
