@@ -31,6 +31,6 @@ nohup java -jar target/spring-boot-web.jar & (Running the Application in Backend
 
 Note: Open the Port 8080 and Check the application Status.
 
-![1.Deploying_Application_Manually/images/app.png](1.Deploying_Application_Manually/images/app.png)
+![images/app.png](images/app.png)
 
 
