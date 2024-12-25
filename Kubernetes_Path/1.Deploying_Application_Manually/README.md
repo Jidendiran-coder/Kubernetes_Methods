@@ -32,4 +32,8 @@ nohup java -jar target/spring-boot-web.jar > application.log 2>&1 & #(Running th
 Note: Open the Port 8080 and Check the application Status. If Any application is running in port 8080, then execute this command "java -jar target/spring-boot-web.jar --server.port=8081"
 
 ![Example Output](pics\app.png)
+<<<<<<< HEAD:Kubernetes_Path/1.Deploying_Application_Manually/README.md
+=======
+
+>>>>>>> 56db2cb228342d6d9f1503acade2c1c341b0d097:Kubernetes_Path/1.Deploying_Application_Manually/Spring-boot-App/README.md
 
