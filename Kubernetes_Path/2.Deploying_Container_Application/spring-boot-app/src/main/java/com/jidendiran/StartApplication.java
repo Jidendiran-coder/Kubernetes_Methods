@@ -13,7 +13,7 @@ public class StartApplication {
     @GetMapping("/")
     public String index(final Model model) {
         model.addAttribute("title", "We have successfully built a Docker sprint boot application using Maven");
-        model.addAttribute("msg", "I'm Jidendiran, Congratulation on your Application Progress");
+        model.addAttribute("msg", "I am Jidendiran, Congratulation on your Application Progress");
         return "index";
     }
 
