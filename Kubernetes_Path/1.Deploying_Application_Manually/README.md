@@ -29,7 +29,8 @@ java -jar target/spring-boot-web.jar #(Just running the Application)
 
 nohup java -jar target/spring-boot-web.jar > application.log 2>&1 & #(Running the Application in Backend)
 
-Note: Open the Port 8080 and Check the application Status. If Any application is running in port 8080, then execute this command "java -jar target/spring-boot-web.jar --server.port=8081"
+Note: Open the Port 8080 and Check the application Status. If Any application is running in port 8080, then execute this below command 
+"java -jar target/spring-boot-web.jar --server.port=8081"
 
 ![images/app.png](images/app.png)
 
