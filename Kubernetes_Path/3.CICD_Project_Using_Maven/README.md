@@ -25,7 +25,7 @@ sudo apt-get install jenkins
 
 Maven Plugin needed for this, After install the Maven just Set it in the Global Configuration tools and call it in our groovy Script.
 
-My pipeline Groovy Script Placed in the following Path: 3.CICDPROJECT_USING_MAVEN/spring-boot-app/JenkinsFile (Should be placed in the pox.xml folder)
+My pipeline Groovy Script Placed in the following Path: 3.CICDPROJECT_USING_MAVEN/spring-boot-app/JenkinsFile (Should be placed in the pom.xml folder)
 
 3. Start the BUild. Once Build completed JAR File would be located in the Jenkins WorkSpace Folder and Path would be /var/lib/jenkins/workspace/<buildname>/spring-boot-app/target/
 
